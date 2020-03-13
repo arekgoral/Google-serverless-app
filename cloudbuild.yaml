@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: anztestwebapi
+  name: anztestwebapi
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: anztestwebapi
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: anztestwebapi
+    spec:
+      containers:
+        - image: gcr.io/$PROJECT_ID/github.com/arekgoral/anz-test
+          imagePullPolicy: IfNotPresent
+          name: anz-test-1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: anztestwebapi
+  name: anztestwebapi-hpa-iyef
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: anztestwebapi
