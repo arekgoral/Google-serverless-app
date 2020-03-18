@@ -7,7 +7,7 @@ import (
 
 var currentver = ""
 var sha = ""
-var description = "anz-test-app"
+var description = "anz-test-app1"
 
 type Version struct {
 	Version     string
