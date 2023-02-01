@@ -1,5 +1,5 @@
 # ANZ-Test
-ANZ-Test is a golang webserver that dynamically returns last commit's tag as version, last commit's SHA and description of the application.
+ANZ-Test is a golang webserver that dynamically returns last commit's tag as a version, last commit's SHA and description of the application.
 The last commit needs to be git tagged. E.G 'git tag 1.1'
 Decription is hard-coded. Version and SHA are injected during the build time by using the argument '-ldflags'
 
