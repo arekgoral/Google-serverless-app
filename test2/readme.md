@@ -3,18 +3,6 @@ An example webserver written in golang that dynamically returns last commit's ta
 The last commit needs to be git tagged. E.G 'git tag 1.1'
 Decription is hard-coded. Version and SHA are injected during the build time by using the argument '-ldflags'
 
-## Requirements
-To run this web service locally, you will need following:
-- [`docker`]
-- [`go@1.13+`]
-- [`git`]
-
-execute: 
-git tag [version]
-build.sh to build the docker container
-Access the web service via 
-http://127.0.0.1:8080/version
-
 To run thus web service as a serverless app:
 
 1. To build and push as image to the google Cloud Registry.
