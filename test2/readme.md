@@ -17,9 +17,11 @@ http://127.0.0.1:8080/version
 
 To run thus web service as a serverless app:
 
-1. push as image to the google Cloud Registry.  Execute:
+1. push as image to the google Cloud Registry.
+Execute:
 gcloud builds submit --region=[region] --tag [region]-docker.pkg.dev/[project-id]/anz-docker-repo/anz-image:tag1.1
 
-2. deploy as serverless google Cloud Run app. Execute
+3. deploy as serverless google Cloud Run app.
+Execute:
 gcloud builds submit --region=us-[region] --config cloudbuild.yaml
 
